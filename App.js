@@ -6,20 +6,21 @@ import {
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import reduxThunk from 'redux-thunk';
+import { Router, Scene } from 'react-native-router-flux';
 import reducers from './reducers/index';
-import { SearchContainer } from './containers';
+import { SearchContainer, AutoCompleteContainer } from './containers';
 const store = createStore(reducers, applyMiddleware(reduxThunk));
 
 export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <SearchContainer />
-        {/* <Router>
-          <Scene key="root" hideNavBar>
-            <Scene exact key="home" component={SearchContainer} initial={true}/>
+        <Router>
+          <Scene key="root" hideNavBar={true}>
+            <Scene key="search" component={SearchContainer}   initial={true}/>
+            <Scene key="autoComplete" component={AutoCompleteContainer} />
           </Scene>
-        </Router> */}
+        </Router>
       </Provider>
     );
   }

@@ -2,27 +2,24 @@ import React, { Component } from 'react';
 import { View, Text, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import { TabView } from 'react-native-tab-view';
-import Header from '../../components/header';
-import OneWay from '../../components/one-way';
-import TwoWay from '../../components/two-way';
-
-const FirstRoute = () => (
-    <OneWay />
-);
-const SecondRoute = () => (
-    <TwoWay />
-);
+import { Header, OneWay, RoundTrip } from '../../components/index';
+import {Actions} from 'react-native-router-flux';
 class SearchContainer extends Component {
     constructor() {
         super();
         this.state = {
             index: 0,
             routes: [
-                { key: 'oneWay', title: 'One-Way' },
-                { key: 'twoWay', title: 'Two-Way' },
-            ],
+                { key: 'oneWay', title: 'One Way' },
+                { key: 'roundTrip', title: 'Round Trip' },
+            ]
         };
     }
+
+    fromClick = () => {
+        Actions.autoComplete();
+    }
+
     render() {
         return (
             <View style={{ flex: 1 }}>
@@ -37,9 +34,9 @@ class SearchContainer extends Component {
                     renderScene={({ route }) => {
                         switch (route.key) {
                             case 'oneWay':
-                                return <FirstRoute />;
-                            case 'twoWay':
-                                return <SecondRoute />;
+                                return <OneWay fromClick={this.fromClick} />;
+                            case 'roundTrip':
+                                return <RoundTrip />;
                             default:
                                 return null;
                         }

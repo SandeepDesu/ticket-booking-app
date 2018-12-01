@@ -1,3 +1,10 @@
 import SearchContainer from './search';
+import AutoCompleteContainer from './auto-complete';
 
-export { SearchContainer }
+/**
+ * exporting Containers
+ */
+export { 
+    SearchContainer, 
+    AutoCompleteContainer 
+}
