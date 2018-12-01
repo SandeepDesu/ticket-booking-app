@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
-import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
+import { TabView } from 'react-native-tab-view';
 import Header from '../../components/header';
 import OneWay from '../../components/one-way';
 import TwoWay from '../../components/two-way';
@@ -45,7 +45,7 @@ class SearchContainer extends Component {
                         }
                     }}
                     onIndexChange={index => this.setState({ index })}
-                    initialLayout={{ width: Dimensions.get('window').width,height: Dimensions.get('window').height}}
+                    initialLayout={{ width: Dimensions.get('window').width, height: Dimensions.get('window').height }}
                 />
             </View>
         )
